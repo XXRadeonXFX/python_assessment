@@ -1,88 +1,133 @@
-# 🚀 Python Assessment
+# 📌 Python Assessment
 
-## 📌 Overview
-This repository contains Python assessment tasks designed to test proficiency in Python programming. It includes multiple scripts, configuration files, and structured project directories.
+## 📖 Overview
 
-## ✨ Features
-✅ Multiple Python scripts solving different problem statements.  
-✅ Configuration files for custom inputs.  
-✅ Organized directory structure for better code management.  
-✅ Backup functionality to store previous outputs.  
+This repository contains a collection of Python assessment scripts designed to solve various problems. These scripts demonstrate proficiency in Python programming, including working with configuration files, databases, APIs, and automation.
 
-## ⚙️ Installation & Setup
-### 🔹 Prerequisites
-Ensure you have Python installed on your system. You can check by running:
-```sh
-python --version
-```
+## 📂 Repository Structure
 
-### 🔹 Clone the Repository
-To get started, clone the repository using Git:
+The repository includes the following files:
+
+- **`question1.py`** - Solution to the first assessment task.
+- **`question2.py`** - Solution to the second assessment task.
+- **`question3.py`** - Solution to the third assessment task (parsing configuration files and storing them in MongoDB).
+- **`question4.py`** - Solution to the fourth assessment task.
+- **`config.ini`** - Sample configuration file used by `question3.py`.
+- **`README.md`** - This file, providing an overview of the repository.
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+To run the scripts, ensure you have the following installed:
+
+- **Python 3.x** ([Download Python](https://www.python.org/downloads/))
+- **MongoDB** (for `question3.py`) ([Download MongoDB](https://www.mongodb.com/try/download/community))
+
+### 🔧 Installation
+
+#### 📥 Clone the Repository
 ```sh
 git clone https://github.com/XXRadeonXFX/python_assessment.git
 cd python_assessment
 ```
 
-### 🔹 Install Dependencies
-If any dependencies are required, install them using:
+#### 🏗️ Create and Activate a Virtual Environment (Recommended)
+```sh
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+#### 📦 Install Required Dependencies
 ```sh
 pip install -r requirements.txt
 ```
-_(Ensure a `requirements.txt` file is present in the repo; otherwise, manually install dependencies.)_
+> **Note:** If `requirements.txt` is not available, install dependencies manually as needed.
 
-## 🚀 Usage
-Run the individual scripts to execute specific assessment tasks.
+## 🏃 Running the Scripts
+
+Each script can be executed individually. Follow the specific instructions below:
+
+### ▶️ Running `question1.py`
 ```sh
 python question1.py
+```
+
+### ▶️ Running `question2.py`
+```sh
 python question2.py
+```
+
+### ▶️ Running `question3.py` (Configuration File Parser with MongoDB)
+#### 🛠 Ensure MongoDB is running:
+```sh
+mongod --dbpath /path/to/data/db  # Modify path accordingly
+```
+
+#### 🚀 Run the script:
+```sh
 python question3.py
+```
+
+#### 🗄 Verify data in MongoDB:
+```sh
+mongo
+use configDB
+db.configData.find().pretty()
+```
+
+### ▶️ Running `question4.py`
+```sh
 python question4.py
 ```
-Modify the configuration file (`sample_config.ini`) to provide custom inputs before running the scripts.
 
-## 📁 Project Structure
-```
-python_assessment/
-│── backups/            # Stores backup files
-│── my_project/         # Main project directory
-│── question1.py        # Assessment script 1
-│── question2.py        # Assessment script 2
-│── question3.py        # Assessment script 3
-│── question4.py        # Assessment script 4
-│── sample_config.ini   # Configuration file
-│── config_output.json  # Output configuration
-│── README.md           # Project documentation
+## 🌐 API Endpoints
+
+`question3.py` includes a **Flask API** to retrieve stored configuration data from MongoDB.
+
+### 🌟 Start the API
+```sh
+python question3.py
 ```
 
-## 📜 Code Description
-### 🔹 `question1.py`
-📌 This script solves a specific problem using Python. It reads input from a file or user input, processes data, and prints the result.
+### 📡 Access Configuration Data
+Open your browser or use Postman to visit:
+```sh
+http://127.0.0.1:5000/get_config
+```
 
-### 🔹 `question2.py`
-📌 Handles data transformation and manipulation. It reads structured data, applies transformations, and outputs formatted results.
+## ⚙️ Configuration File (`config.ini`)
+The `config.ini` file contains the following structure:
 
-### 🔹 `question3.py`
-📌 Focused on automation tasks such as file handling, backups, and system operations. It contains logic to manage and process multiple files.
+```ini
+[Database]
+host = localhost
+port = 3306
+username = admin
+password = secret
 
-### 🔹 `question4.py`
-📌 Implements an algorithm or computational logic to solve a complex problem efficiently. It may involve sorting, searching, or mathematical computations.
+[Server]
+address = 192.168.0.1
+port = 8080
+```
 
-### 🔹 `config.ini`
-📌 A configuration file used to store settings required by different scripts. Users can modify values to change script behavior dynamically.
+Ensure this file is correctly formatted and present in the repository root before running `question3.py`.
 
-## ⚡ Configuration
-The `config.ini` file allows users to modify input settings for scripts dynamically. The `config_output.json` stores the output results based on execution.
+## 🛠 Troubleshooting
 
-## 🤝 Contributing
-Contributions are welcome! To contribute:
-1️⃣ Fork the repository.  
-2️⃣ Create a feature branch (`git checkout -b feature-branch`).  
-3️⃣ Commit your changes (`git commit -m 'Add feature'`).  
-4️⃣ Push to the branch (`git push origin feature-branch`).  
-5️⃣ Create a Pull Request.  
+### ❌ MongoDB Connection Issues
+- Ensure MongoDB is running.
+- Check the connection string in `question3.py`.
 
-## 📜 License
-This project is open-source and available under the [MIT License](LICENSE).  
+### ❌ Configuration File Not Found
+- Ensure `config.ini` is in the correct location.
+- Verify file permissions.
+
+### ❌ Flask API Not Working
+- Check for port conflicts.
+- Ensure Flask is installed (`pip install flask`).
 
 ---
-✨ _Feel free to update this README as the project evolves!_ 🚀
+
+✨ *Feel free to modify and expand upon this project as needed!* 🚀
+

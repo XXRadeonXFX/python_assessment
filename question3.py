@@ -72,17 +72,23 @@ def parse_config(file_path):
         return None
 
 def save_to_mongo(data):
-    """Saves JSON data to MongoDB."""
+    """Saves JSON data to MongoDB, ensuring no duplicate records."""
     try:
         client = pymongo.MongoClient(MONGO_URI)
         db = client[DATABASE_NAME]
         collection = db[COLLECTION_NAME]
         
-        # Insert JSON data into MongoDB
-        print("Saving to MongoDB:", json.dumps(data, indent=4))
-        collection.insert_one(data)
+        # Define a unique condition (you can customize this based on your needs)
+        unique_condition = {"config": data}  # Ensures the same config is not duplicated
+
+        # Check if the document already exists, if not, insert it
+        result = collection.update_one(unique_condition, {"$set": data}, upsert=True)
         
-        print("Data saved to MongoDB successfully.")
+        if result.matched_count > 0:
+            print("Duplicate data detected. Skipping insert.")
+        else:
+            print("New data saved to MongoDB.")
+        
     except Exception as e:
         print(f"Error saving to MongoDB: {e}")
 

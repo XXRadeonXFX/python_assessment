@@ -67,14 +67,11 @@ python_assessment/
 ### 🔹 `question4.py`
 📌 Implements an algorithm or computational logic to solve a complex problem efficiently. It may involve sorting, searching, or mathematical computations.
 
-### 🔹 `sample_config.ini`
+### 🔹 `config.ini`
 📌 A configuration file used to store settings required by different scripts. Users can modify values to change script behavior dynamically.
 
-### 🔹 `config_output.json`
-📌 Stores the processed output data in JSON format for further analysis or reporting.
-
 ## ⚡ Configuration
-The `sample_config.ini` file allows users to modify input settings for scripts dynamically. The `config_output.json` stores the output results based on execution.
+The `config.ini` file allows users to modify input settings for scripts dynamically. The `config_output.json` stores the output results based on execution.
 
 ## 🤝 Contributing
 Contributions are welcome! To contribute:
